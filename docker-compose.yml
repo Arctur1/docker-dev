@@ -10,3 +10,17 @@ services:
       - ./postgresql/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - docker-dev
+  redis:
+    image: 'redis:alpine'
+    volumes:
+    - ./redis/data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - docker-dev
+
+networks:
+  docker-dev:
+    driver: bridge
